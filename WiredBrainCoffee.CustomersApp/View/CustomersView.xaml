@@ -70,15 +70,6 @@
             Grid.Column="1"
             Margin="10"
             Visibility="{Binding IsCustomerSelected, Converter={StaticResource BooleanToVisibiltyConv}}">
-            <StackPanel.Resources>
-                <Style x:Key="TextBoxBaseStyle" TargetType="TextBox">
-                    <Setter Property="Padding" Value="5" />
-                </Style>
-                <Style BasedOn="{StaticResource TextBoxBaseStyle}" TargetType="TextBox">
-                    <Setter Property="Background" Value="#555555" />
-                    <Setter Property="Foreground" Value="White" />
-                </Style>
-            </StackPanel.Resources>
             <Label>Firstname:</Label>
             <TextBox Text="{Binding SelectedCustomer.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <Label>Lastname:</Label>
