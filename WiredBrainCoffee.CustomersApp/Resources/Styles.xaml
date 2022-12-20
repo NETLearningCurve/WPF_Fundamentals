@@ -8,12 +8,26 @@
     <Style BasedOn="{StaticResource TextBoxBaseStyle}" TargetType="TextBox">
         <Setter Property="Background" Value="#555555" />
         <Setter Property="Foreground" Value="White" />
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel>
+                        <AdornedElementPlaceholder />
+                        <TextBlock
+                            Margin="3,0,0,0"
+                            Foreground="Red"
+                            Text="This is not valid" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
         <Style.Triggers>
             <Trigger Property="IsFocused" Value="True">
                 <Setter Property="Background" Value="#111111" />
             </Trigger>
             <Trigger Property="Validation.HasError" Value="True">
                 <Setter Property="Background" Value="red" />
+                <Setter Property="Margin" Value="0,0,0,15" />
                 <!--
                     We need the TextBox as a data source, using the RelativeSource property in Self mode.
                     That give us the TextBox element as a data source.
