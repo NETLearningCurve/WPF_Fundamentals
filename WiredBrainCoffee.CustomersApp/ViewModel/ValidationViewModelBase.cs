@@ -32,17 +32,14 @@ namespace WiredBrainCoffee.CustomersApp.ViewModel
         // the name of the property automatically
         protected void AddError(string error, [CallerMemberName] string? propertyName = null)
         {
-            if (propertyName is null)
-            {
-                return;
-            }
+            if (propertyName is null) return;
 
             if (!_errorsByPropertyName.ContainsKey(propertyName))
             {
                 _errorsByPropertyName[propertyName] = new List<string>();
             }
 
-            if (!_errorsByPropertyName.ContainsKey(error))
+            if (!_errorsByPropertyName[propertyName].Contains(error))
             {
                 _errorsByPropertyName[propertyName].Add(error);
                 OnErrorsChanged(new DataErrorsChangedEventArgs(propertyName));
@@ -52,14 +49,11 @@ namespace WiredBrainCoffee.CustomersApp.ViewModel
 
         protected void ClearErrors([CallerMemberName] string? propertyName = null)
         {
-            if (propertyName is null)
-            {
-                return;
-            }
+            if (propertyName is null) return;
 
             if (_errorsByPropertyName.ContainsKey(propertyName))
             {
-                _errorsByPropertyName[propertyName].Remove(propertyName);
+                _errorsByPropertyName.Remove(propertyName);
                 OnErrorsChanged(new DataErrorsChangedEventArgs(propertyName));
                 RaisePropertyChanged(nameof(HasErrors));
             }
