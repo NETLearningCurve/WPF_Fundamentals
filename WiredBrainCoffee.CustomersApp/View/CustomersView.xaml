@@ -33,7 +33,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition />
-            </Grid.RowDefinitions>
+            </Grid.RowDefinitions>                                  
 
             <StackPanel Orientation="Horizontal">
                 <Button
